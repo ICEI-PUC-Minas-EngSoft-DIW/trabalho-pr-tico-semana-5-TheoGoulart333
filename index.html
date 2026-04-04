@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feelo — Share What You Feel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- SIDEBAR NAV -->
+  <aside class="sidebar">
+    <div class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="18" stroke="var(--accent)" stroke-width="2"/>
+          <path d="M20 10 C14 10, 10 14, 10 19 C10 26, 20 31, 20 31 C20 31, 30 26, 30 19 C30 14, 26 10, 20 10Z" fill="var(--accent)" opacity="0.8"/>
+          <circle cx="15" cy="18" r="2" fill="white"/>
+          <circle cx="25" cy="18" r="2" fill="white"/>
+        </svg>
+      </div>
+      <span class="logo-text">feelo</span>
+    </div>
+
+    <nav class="nav-links">
+      <a href="index.html" class="nav-item active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span>Início</span>
+      </a>
+      <a href="explore.html" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <span>Explorar</span>
+      </a>
+      <a href="notifications.html" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+        <span>Notificações</span>
+        <span class="badge">3</span>
+      </a>
+      <a href="messages.html" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        <span>Mensagens</span>
+      </a>
+      <a href="following.html" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        <span>Seguindo</span>
+      </a>
+      <a href="profile.html" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span>Perfil</span>
+      </a>
+    </nav>
+
+    <button class="post-btn" onclick="openModal()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      Novo Feel
+    </button>
+
+    <div class="sidebar-user">
+      <img src="sasuke_perfil.png" alt="perfil" class="user-avatar-sm">
+      <div>
+        <p class="user-name-sm">theosoad</p>
+        <p class="user-handle">@theosoad</p>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN FEED -->
+  <main class="main-content">
+    <div class="feed-header">
+      <h1>Para Você</h1>
+      <div class="feed-tabs">
+        <a href="index.html" class="tab active">Para Você</a>
+        <a href="following.html" class="tab">Seguindo</a>
+      </div>
+    </div>
+
+    <!-- Compose Box -->
+    <div class="compose-box">
+      <img src="sasuke_perfil.png" alt="perfil" class="user-avatar">
+      <div class="compose-inner">
+        <input type="text" placeholder="Como você está se sentindo agora?" class="compose-input" onclick="openModal()">
+        <div class="compose-actions">
+          <button class="compose-emoji">😊 Emoção</button>
+          <button class="compose-photo">📷 Foto</button>
+          <button class="compose-submit" onclick="openModal()">Feelo</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Posts -->
+    <div class="posts-feed" id="posts-container">
+
+      <article class="post-card">
+        <div class="post-header">
+          <img src="sasuke_perfil.png" alt="" class="user-avatar">
+          <div class="post-user-info">
+            <span class="post-name">theosoad</span>
+            <span class="post-handle">@theosoad · 2h</span>
+          </div>
+          <span class="feeling-tag">😔 Melancólico</span>
+        </div>
+        <p class="post-text">"Tem dias em que o silêncio do caminho fala mais alto que qualquer pensamento — e eu só sigo, tentando me encontrar no meio do vazio."</p>
+        <img src="https://picsum.photos/seed/road/600/350" alt="" class="post-image">
+        <div class="post-actions">
+          <button class="action-btn like-btn" onclick="toggleLike(this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            <span>247</span>
+          </button>
+          <button class="action-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            <span>38</span>
+          </button>
+          <button class="action-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            <span>Compartilhar</span>
+          </button>
+        </div>
+      </article>
+
+      <article class="post-card">
+        <div class="post-header">
+          <div class="avatar-placeholder" style="background:#b8d4f0">MK</div>
+          <div class="post-user-info">
+            <span class="post-name">mariakawai</span>
+            <span class="post-handle">@mariakawai · 4h</span>
+          </div>
+          <span class="feeling-tag">🌸 Grata</span>
+        </div>
+        <p class="post-text">Hoje acordei com a sensação rara de que tudo vai dar certo. Não sei explicar, mas parece que o universo conspirou a meu favor. Às vezes bastam pequenos sinais 🌸</p>
+        <div class="post-actions">
+          <button class="action-btn like-btn" onclick="toggleLike(this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            <span>512</span>
+          </button>
+          <button class="action-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            <span>74</span>
+          </button>
+          <button class="action-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            <span>Compartilhar</span>
+          </button>
+        </div>
+      </article>
+
+      <article class="post-card">
+        <div class="post-header">
+          <div class="avatar-placeholder" style="background:#c8e6c9">LF</div>
+          <div class="post-user-info">
+            <span class="post-name">lucasfeels</span>
+            <span class="post-handle">@lucasfeels · 6h</span>
+          </div>
+          <span class="feeling-tag">😤 Frustrado</span>
+        </div>
+        <p class="post-text">Às vezes a gente se esforça tanto e parece que nada muda. Mas eu sei que é um processo. Respira, Lucas. Respira.</p>
+        <img src="https://picsum.photos/seed/rain/600/300" alt="" class="post-image">
+        <div class="post-actions">
+          <button class="action-btn like-btn" onclick="toggleLike(this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            <span>189</span>
+          </button>
+          <button class="action-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            <span>21</span>
+          </button>
+          <button class="action-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            <span>Compartilhar</span>
+          </button>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- RIGHT SIDEBAR -->
+  <aside class="right-sidebar">
+    <div class="search-box">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" placeholder="Buscar feelings...">
+    </div>
+
+    <div class="widget">
+      <h3 class="widget-title">Trending Feelings</h3>
+      <div class="trend-item">
+        <span class="trend-emoji">😔</span>
+        <div>
+          <p class="trend-name">#melancolia</p>
+          <p class="trend-count">1.2k feels</p>
+        </div>
+      </div>
+      <div class="trend-item">
+        <span class="trend-emoji">🌸</span>
+        <div>
+          <p class="trend-name">#gratidão</p>
+          <p class="trend-count">984 feels</p>
+        </div>
+      </div>
+      <div class="trend-item">
+        <span class="trend-emoji">💙</span>
+        <div>
+          <p class="trend-name">#paz</p>
+          <p class="trend-count">763 feels</p>
+        </div>
+      </div>
+      <div class="trend-item">
+        <span class="trend-emoji">🔥</span>
+        <div>
+          <p class="trend-name">#motivação</p>
+          <p class="trend-count">621 feels</p>
+        </div>
+      </div>
+      <div class="trend-item">
+        <span class="trend-emoji">😰</span>
+        <div>
+          <p class="trend-name">#ansiedade</p>
+          <p class="trend-count">540 feels</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="widget">
+      <h3 class="widget-title">Sugestões para seguir</h3>
+      <div class="suggest-item">
+        <div class="avatar-placeholder" style="background:#fce4ec">AI</div>
+        <div class="suggest-info">
+          <p class="suggest-name">anaisbr</p>
+          <p class="suggest-handle">@anaisbr</p>
+        </div>
+        <button class="follow-btn">Seguir</button>
+      </div>
+      <div class="suggest-item">
+        <div class="avatar-placeholder" style="background:#e8f5e9">GV</div>
+        <div class="suggest-info">
+          <p class="suggest-name">gvsilva</p>
+          <p class="suggest-handle">@gvsilva</p>
+        </div>
+        <button class="follow-btn">Seguir</button>
+      </div>
+      <div class="suggest-item">
+        <div class="avatar-placeholder" style="background:#fffde7">PR</div>
+        <div class="suggest-info">
+          <p class="suggest-name">pedroreis</p>
+          <p class="suggest-handle">@pedroreis</p>
+        </div>
+        <button class="follow-btn">Seguir</button>
+      </div>
+    </div>
+
+    <footer class="footer-links">
+      <a href="#">Sobre</a> · <a href="#">Privacidade</a> · <a href="#">Termos</a> · <a href="#">Ajuda</a>
+      <p>©2026 Feelo Corp</p>
+    </footer>
+  </aside>
+
+  <!-- MODAL NEW POST -->
+  <div class="modal-overlay" id="modal" onclick="closeModal(event)">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <h2 class="modal-title">Como você está se sentindo?</h2>
+      <div class="modal-user">
+        <img src="sasuke_perfil.png" alt="" class="user-avatar">
+        <span>theosoad</span>
+      </div>
+      <div class="feeling-picker">
+        <span class="feel-option" onclick="selectFeel(this, '😊 Feliz')">😊 Feliz</span>
+        <span class="feel-option" onclick="selectFeel(this, '😔 Triste')">😔 Triste</span>
+        <span class="feel-option" onclick="selectFeel(this, '😤 Frustrado')">😤 Frustrado</span>
+        <span class="feel-option" onclick="selectFeel(this, '😰 Ansioso')">😰 Ansioso</span>
+        <span class="feel-option" onclick="selectFeel(this, '🌸 Grato')">🌸 Grato</span>
+        <span class="feel-option" onclick="selectFeel(this, '💙 Em Paz')">💙 Em Paz</span>
+        <span class="feel-option" onclick="selectFeel(this, '🥰 Apaixonado')">🥰 Apaixonado</span>
+        <span class="feel-option" onclick="selectFeel(this, '😶 Vazio')">😶 Vazio</span>
+      </div>
+      <textarea class="modal-textarea" id="post-text" placeholder="Compartilhe o que sente..."></textarea>
+      <button class="modal-submit" onclick="publishPost()">Publicar Feel</button>
+    </div>
+  </div>
+
+  <script>
+    let selectedFeeling = '';
+
+    function openModal() {
+      document.getElementById('modal').classList.add('active');
+    }
+
+    function closeModal(e) {
+      if (!e || e.target === document.getElementById('modal')) {
+        document.getElementById('modal').classList.remove('active');
+        selectedFeeling = '';
+        document.querySelectorAll('.feel-option').forEach(o => o.classList.remove('selected'));
+        document.getElementById('post-text').value = '';
+      }
+    }
+
+    function selectFeel(el, feeling) {
+      document.querySelectorAll('.feel-option').forEach(o => o.classList.remove('selected'));
+      el.classList.add('selected');
+      selectedFeeling = feeling;
+    }
+
+    function publishPost() {
+      const text = document.getElementById('post-text').value;
+      if (!text.trim()) return;
+      const container = document.getElementById('posts-container');
+      const article = document.createElement('article');
+      article.className = 'post-card new-post';
+      article.innerHTML = `
+        <div class="post-header">
+          <img src="sasuke_perfil.png" alt="" class="user-avatar">
+          <div class="post-user-info">
+            <span class="post-name">theosoad</span>
+            <span class="post-handle">@theosoad · agora</span>
+          </div>
+          ${selectedFeeling ? `<span class="feeling-tag">${selectedFeeling}</span>` : ''}
+        </div>
+        <p class="post-text">"${text}"</p>
+        <div class="post-actions">
+          <button class="action-btn like-btn" onclick="toggleLike(this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            <span>0</span>
+          </button>
+          <button class="action-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            <span>0</span>
+          </button>
+          <button class="action-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            <span>Compartilhar</span>
+          </button>
+        </div>
+      `;
+      container.insertBefore(article, container.firstChild);
+      closeModal();
+    }
+
+    function toggleLike(btn) {
+      btn.classList.toggle('liked');
+      const span = btn.querySelector('span');
+      const count = parseInt(span.textContent);
+      span.textContent = btn.classList.contains('liked') ? count + 1 : count - 1;
+    }
+  </script>
+</body>
+</html>
