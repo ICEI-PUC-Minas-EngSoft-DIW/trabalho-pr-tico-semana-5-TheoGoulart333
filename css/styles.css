@@ -1016,3 +1016,29 @@ body {
   .sidebar { display: none; }
   .main-content { max-width: 100%; }
 }
+/* AJUSTE PARA CELULAR (MOBILE) */
+@media (max-width: 768px) {
+  body {
+    /* Muda de 3 colunas para 1 coluna só */
+    grid-template-columns: 1fr; 
+    padding: 10px;
+  }
+
+  /* Esconde as barras laterais no celular para o feed respirar */
+  .sidebar, .right-sidebar {
+    display: none;
+  }
+
+  /* Faz o conteúdo principal ocupar a tela toda */
+  .main-content {
+    width: 100%;
+    margin: 0;
+  }
+
+  /* Ajusta o texto do post para não quebrar por letra */
+  .post-text {
+    word-break: normal;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+}
