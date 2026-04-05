@@ -10,10 +10,10 @@ Uma interface de rede social responsiva desenvolvida com **HTML5** e **CSS3 puro
 
 ## 📱 Capturas de Tela
 ### Versão Desktop
-![Desktop Home](img/desktop-print.png)
+![Desktop Home](img/feelo-preview-1.png)
 
 ### Versão Mobile
-![Mobile Home](img/mobile-print.png)
+![Mobile Home](img/feelo-preview-2.png)
 
 ## 🛠️ Tecnologias Utilizadas
 - HTML5 Semântico
